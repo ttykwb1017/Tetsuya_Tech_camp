@@ -18,8 +18,21 @@ def post_review(array)
   return array
 end
 
-def read_reviews
+def read_reviews(array)
+  count = 0
+  array.each do |post|
+    puts "[#{count}] : #{post[:title]}のレビュー"
+    count += 1
+  end
+  puts "\n見たいレビューの番号を入力してください"
+  no = gets.to_i
 
+  post = array[no]
+
+  border = "---------------------------------"
+  puts "ジャンル : #{post[:genre]}\n#{border}"
+  puts "タイトル : #{post[:title]}\n#{border}"
+  puts "感想 : \n#{post[:review]}\n#{border}"
 end
 
 def end_program
@@ -39,7 +52,7 @@ while true do
   if suuzi == 0 then
     posts = post_review(posts)
   elsif suuzi == 1 then
-   read_reviews
+   read_reviews(posts)
   elsif suuzi == 2 then
    end_program
   else  
